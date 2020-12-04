@@ -6,7 +6,7 @@
 //
 
 #import "QIMPrivateHeader.h"
-
+#import "AFNetworking.h"
 NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^QIMKitCheckImageCallBack)(NSString *imageUrl);
@@ -70,6 +70,7 @@ typedef void(^QIMKitCheckFileCallBack)(NSString *fileUrl);
  @return 返回图片地址
  */
 - (void)qim_uploadImageWithImageData:(NSData *)fileData WithMsgId:(NSString *)key WithMsgType:(int)type WithPathExtension:(NSString *)extension withCallBack:(QIMKitUploadImageCallBack)callback;
+- (void)qim_uploadImageWithImageLocalPath:(NSData *)fileData WithLoaclPath:(NSString *)filePath WithMsgId:(NSString *)key WithMsgType:(int)type WithPathExtension:(NSString *)extension withCallBack:(QIMKitUploadImageCallBack)callback;
 
 /**
  上传我的头像
