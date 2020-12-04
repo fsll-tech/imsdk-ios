@@ -13,4 +13,6 @@
 [submodule "libqimgeneralmodule-ios"]
 	path = libqimgeneralmodule-ios
 	url = https://github.com/startalkIM/libqimgeneralmodule-ios.git
-
+[submodule "libqimcommon-ios"]
+	path = libqimcommon-ios
+	url = https://github.com/startalkIM/libqimcommon-ios.git
