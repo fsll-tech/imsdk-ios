@@ -42,7 +42,7 @@ static dispatch_queue_t qim_request_complete_callback_quene() {
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+//        [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
         self.serializer = [[QIMHttpSerializer alloc] init];
     }
     return self;

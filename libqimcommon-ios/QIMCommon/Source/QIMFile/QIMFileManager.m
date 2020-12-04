@@ -272,24 +272,80 @@ static QIMFileManager *_newfileManager = nil;
                          [[QIMManager getLastUserName] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
                          [[QIMManager sharedInstance] myRemotelogginKey],
                          [[QIMAppInfo sharedInstance] AppBuildVersion],fileKey,size];
-    [[QIMManager sharedInstance] uploadFileRequest:destUrl withFileData:headerData withProgressBlock:^(float progressValue) {
-        NSLog(@"progressValue : %lf", progressValue);
-    } withSuccessCallBack:^(NSData *responseData) {
-        NSDictionary *result = [[QIMJSONSerializer sharedInstance] deserializeObject:responseData error:nil];
-        BOOL ret = [[result objectForKey:@"ret"] boolValue];
-        if (ret) {
-            NSString *resultUrl = [result objectForKey:@"data"];
-            if ([resultUrl isEqual:[NSNull null]] == NO && resultUrl.length > 0) {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",
+                                                            @"text/html",
+                                                            @"image/jpeg",
+                                                            @"image/png",
+                                                            @"application/octet-stream",
+                                                            @"text/json",
+                                                            nil];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSURLSessionDataTask *task = [manager POST:destUrl parameters:dict headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+            NSData *imageDatas = headerData;
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            formatter.dateFormat = @"yyyyMMddHHmmss";
+            NSString *str = [formatter stringFromDate:[NSDate date]];
+            NSString *fileName = [NSString stringWithFormat:@"%@.jpg", str];
+            //上传的参数(上传图片，以文件流的格式)
+            [formData appendPartWithFileData:imageDatas
+                                        name:@"avatar"
+                                    fileName:fileName
+                                    mimeType:@"application/octet-stream"];
+        } progress:^(NSProgress * _Nonnull uploadProgress) {
+            //打印下上传进度
+            NSLog(@"上传进度");
+            NSLog(@"%@",uploadProgress);
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            //上传成功
+            NSLog(@"上传成功");
+            NSLog(@"%@",responseObject[@"data"]);
+            BOOL ret = [[responseObject objectForKey:@"ret"] boolValue];
+            if (ret) {
+                NSString *resultUrl = [responseObject objectForKey:@"data"];
+                if ([resultUrl isEqual:[NSNull null]] == NO && resultUrl) {
+                    //                return resultUrl;
+                    if (callback) {
+                        callback(responseObject[@"data"]);
+                    }
+                } else {
+                    if (callback) {
+                        callback(nil);
+                    }
+                }
+            } else {
                 if (callback) {
-                    callback(resultUrl);
+                    callback(nil);
                 }
             }
-        }
-    } withFailedCallBack:^(NSError *error) {
-        if (callback) {
-            callback(nil);
-        }
-    }];
+            
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            //上传失败
+            NSLog(@"上传失败%@", error);
+            if (callback) {
+                callback(nil);
+            }
+        }];
+    
+//    [[QIMManager sharedInstance] uploadFileRequest:destUrl withFileData:headerData withProgressBlock:^(float progressValue) {
+//        NSLog(@"progressValue : %lf", progressValue);
+//    } withSuccessCallBack:^(NSData *responseData) {
+//        NSDictionary *result = [[QIMJSONSerializer sharedInstance] deserializeObject:responseData error:nil];
+//        BOOL ret = [[result objectForKey:@"ret"] boolValue];
+//        if (ret) {
+//            NSString *resultUrl = [result objectForKey:@"data"];
+//            if ([resultUrl isEqual:[NSNull null]] == NO && resultUrl.length > 0) {
+//                if (callback) {
+//                    callback(resultUrl);
+//                }
+//            }
+//        }
+//    } withFailedCallBack:^(NSError *error) {
+//        if (callback) {
+//            callback(nil);
+//        }
+//    }];
 }
 
 #pragma mark - Private Method
@@ -800,37 +856,102 @@ static QIMFileManager *_newfileManager = nil;
                          [[QIMManager getLastUserName] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
                          [[QIMManager sharedInstance] myRemotelogginKey],
                          [[QIMAppInfo sharedInstance] AppBuildVersion],fileKey,size];
-    [[QIMManager sharedInstance] uploadFileRequest:destUrl withFileData:fileData withProgressBlock:^(float progressValue) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:kQIMUploadFileProgress object:@{@"FileUploadKey":fileKey, @"MessageId":msgId, @"ImageUploadProgress":@(progressValue)}];
-        });
-    } withSuccessCallBack:^(NSData *responseData) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:kQIMUploadFileProgress object:@{@"FileUploadKey":fileKey, @"MessageId":msgId, @"ImageUploadProgress":@(1.0)}];
-        });
-        NSDictionary *result = [[QIMJSONSerializer sharedInstance] deserializeObject:responseData error:nil];
-        BOOL ret = [[result objectForKey:@"ret"] boolValue];
-        if (ret) {
-            NSString *resultUrl = [result objectForKey:@"data"];
-            if ([resultUrl isEqual:[NSNull null]] == NO && resultUrl.length > 0) {
-                if (callBack) {
-                    callBack(resultUrl);
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",
+                                                            @"text/html",
+                                                            @"text/plain",
+                                                            @"image/jpeg",
+                                                            @"image/png",
+                                                            @"application/octet-stream",
+                                                            @"text/json",
+                                                            nil];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSURLSessionDataTask *task = [manager POST:destUrl parameters:dict headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+            NSData *imageDatas = fileData;
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            formatter.dateFormat = @"yyyyMMddHHmmss";
+            NSString *str = [formatter stringFromDate:[NSDate date]];
+            NSString *fileName = [NSString stringWithFormat:@"%@.%@", str, extension];
+            //上传的参数(上传图片，以文件流的格式)
+            [formData appendPartWithFileData:imageDatas
+                                        name:@"file"
+                                    fileName:fileName
+                                    mimeType:@"application/octet-stream"];
+        } progress:^(NSProgress * _Nonnull uploadProgress) {
+            //打印下上传进度
+            NSLog(@"上传进度");
+            NSLog(@"%@",uploadProgress);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:kQIMUploadFileProgress object:@{@"FileUploadKey":fileKey, @"MessageId":msgId, @"ImageUploadProgress":@(uploadProgress.completedUnitCount/uploadProgress.totalUnitCount)}];
+            });
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            //上传成功
+            NSLog(@"上传成功");
+            NSLog(@"%@",responseObject[@"data"]);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:kQIMUploadFileProgress object:@{@"FileUploadKey":fileKey, @"MessageId":msgId, @"ImageUploadProgress":@(1.0)}];
+            });
+            BOOL ret = [[responseObject objectForKey:@"ret"] boolValue];
+            if (ret) {
+                NSString *resultUrl = [responseObject objectForKey:@"data"];
+                if ([resultUrl isEqual:[NSNull null]] == NO && resultUrl) {
+                    //                return resultUrl;
+                    if (callBack) {
+                        callBack(responseObject[@"data"]);
+                    }
+                } else {
+                    if (callBack) {
+                        callBack(nil);
+                    }
                 }
             } else {
                 if (callBack) {
                     callBack(nil);
                 }
             }
-        } else {
+            
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            //上传失败
+            NSLog(@"上传失败%@", error);
             if (callBack) {
                 callBack(nil);
             }
-        }
-    } withFailedCallBack:^(NSError *error) {
-        if (callBack) {
-            callBack(nil);
-        }
-    }];
+        }];
+    
+//    [[QIMManager sharedInstance] uploadFileRequest:destUrl withFileData:fileData withProgressBlock:^(float progressValue) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [[NSNotificationCenter defaultCenter] postNotificationName:kQIMUploadFileProgress object:@{@"FileUploadKey":fileKey, @"MessageId":msgId, @"ImageUploadProgress":@(progressValue)}];
+//        });
+//    } withSuccessCallBack:^(NSData *responseData) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [[NSNotificationCenter defaultCenter] postNotificationName:kQIMUploadFileProgress object:@{@"FileUploadKey":fileKey, @"MessageId":msgId, @"ImageUploadProgress":@(1.0)}];
+//        });
+//        NSDictionary *result = [[QIMJSONSerializer sharedInstance] deserializeObject:responseData error:nil];
+//        BOOL ret = [[result objectForKey:@"ret"] boolValue];
+//        if (ret) {
+//            NSString *resultUrl = [result objectForKey:@"data"];
+//            if ([resultUrl isEqual:[NSNull null]] == NO && resultUrl.length > 0) {
+//                if (callBack) {
+//                    callBack(resultUrl);
+//                }
+//            } else {
+//                if (callBack) {
+//                    callBack(nil);
+//                }
+//            }
+//        } else {
+//            if (callBack) {
+//                callBack(nil);
+//            }
+//        }
+//    } withFailedCallBack:^(NSError *error) {
+//        if (callBack) {
+//            callBack(nil);
+//        }
+//    }];
 }
 
 - (void)qim_sendFileMessageWithFileUrl:(NSString *)fileUrl forMessage:(QIMMessageModel *)message {
