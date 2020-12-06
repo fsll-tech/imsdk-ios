@@ -848,6 +848,10 @@ static QIMFileManager *_newfileManager = nil;
 }
 
 - (void)privateUpLoadFile:(NSData *)fileData WithFileKey:(NSString *)fileKey withMsgId:(NSString *)msgId WithMsgType:(int)type WithPathExtension:(NSString *)extension withCallBack:(QIMKitUploadFileCallBack)callBack {
+    if (extension == nil || [extension isEqual:[NSNull null]] || [extension isEqualToString:@""]) {
+        extension = @"txt";
+    }
+    
     NSString *method = @"file/v2/upload/file";
     NSString *fileName =  [NSString stringWithFormat:@"%@.%@",fileKey, extension];
     long long size = ceil(fileData.length / 1024.0 / 1024.0);
@@ -867,6 +871,9 @@ static QIMFileManager *_newfileManager = nil;
                                                             @"text/json",
                                                             nil];
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSLog(@"开始上传文件：%@", extension);
+    NSLog(@"开始上传文件接口：%@", destUrl);
+    NSLog(@"开始上传文件名称：%@", fileName);
     NSURLSessionDataTask *task = [manager POST:destUrl parameters:dict headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
             NSData *imageDatas = fileData;
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -893,6 +900,7 @@ static QIMFileManager *_newfileManager = nil;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:kQIMUploadFileProgress object:@{@"FileUploadKey":fileKey, @"MessageId":msgId, @"ImageUploadProgress":@(1.0)}];
             });
+            
             BOOL ret = [[responseObject objectForKey:@"ret"] boolValue];
             if (ret) {
                 NSString *resultUrl = [responseObject objectForKey:@"data"];
