@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/Application/ViewController/Other/GroupInfo/QIMGroupChangeNameVC.h

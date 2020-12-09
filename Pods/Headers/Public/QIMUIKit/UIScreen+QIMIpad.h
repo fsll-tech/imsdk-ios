@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/General/Categories/UIScreen/UIScreen+QIMIpad.h

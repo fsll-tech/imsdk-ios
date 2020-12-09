@@ -1,0 +1,1 @@
+../../../QIMKitVendor/QIMKitVendor/QIMPinYin/NSString+QIMPinYin4Cocoa.h

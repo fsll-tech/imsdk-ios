@@ -1,0 +1,1 @@
+../../../../QIMReactNativeLibrary/react-native-vector-icons/RNVectorIconsManager/RNVectorIconsManager.h

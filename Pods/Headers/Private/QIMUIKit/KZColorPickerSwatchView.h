@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIVendorKit/QIMColorPicker/KZColorPickerSwatchView.h

@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/Application/ViewController/Chat/QTDressUp/ChatBGImage/QIMChatBGImageDisplayCell.h

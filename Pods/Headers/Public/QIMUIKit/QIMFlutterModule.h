@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMFlutter/Src/QIMFlutterModule.h

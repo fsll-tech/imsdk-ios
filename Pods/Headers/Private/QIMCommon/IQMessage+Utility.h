@@ -1,0 +1,1 @@
+../../../QIMCommon/QIMCommon/QIMPrivatePBCommonFramework/Headers/QIMPrivatePBCommon/IQMessage+Utility.h

@@ -12,8 +12,7 @@ target 'IMSDK-iOS' do
   # use_frameworks!
 
   # Pods for IMSDK-iOS
-  pod 'AFNetworking', '~> 3.2.1'
-  
+ 
     $debug = ENV['debug']
   if $debug
     pod 'QIMUIKit', path: './libqimuikit-ios'

@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/Application/Model/Core/QCGroupModel.h

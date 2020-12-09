@@ -1,0 +1,1 @@
+../../../../QIMReactNativeLibrary/react-native/Libraries/LinkingIOS/RCTLinkingManager.h

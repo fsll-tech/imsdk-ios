@@ -1,0 +1,1 @@
+../../../../QIMReactNativeLibrary/react-native/Libraries/Image/RCTImageStoreManager.h

@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/Application/ViewController/ResetPWD/Controller/QIMConfirmPWDViewController.h

@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/General/Helper/QIMMessageHelper/QIMMessageTextAttachment.h

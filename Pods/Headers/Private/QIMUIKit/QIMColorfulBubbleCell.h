@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/Application/ViewController/Chat/QTDressUp/ColorfulBubbles/QIMColorfulBubbleCell.h

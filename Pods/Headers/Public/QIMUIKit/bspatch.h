@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMRNKit/rn_3rd/qtalk_search/utils/BSDiff/bzip/bspatch.h

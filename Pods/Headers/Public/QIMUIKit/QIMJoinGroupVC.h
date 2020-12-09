@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/Application/ViewController/Main/Group/GroupManage/QIMJoinGroupVC.h

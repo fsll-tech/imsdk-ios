@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/Application/ViewController/Chat/ImagesEdit/QIMImageEditViewController.h

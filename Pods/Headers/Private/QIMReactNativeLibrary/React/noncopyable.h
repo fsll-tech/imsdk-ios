@@ -1,0 +1,1 @@
+../../../../QIMReactNativeLibrary/ReactCommon/jschelpers/noncopyable.h

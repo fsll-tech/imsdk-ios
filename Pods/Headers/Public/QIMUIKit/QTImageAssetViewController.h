@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/QTalkImagePicker/QTImageAssetViewController.h

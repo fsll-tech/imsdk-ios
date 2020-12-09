@@ -1,0 +1,1 @@
+../../../QIMCommon/QIMCommon/Source/QIMManager/QIMManager+Group.h

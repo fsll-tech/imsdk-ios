@@ -1,0 +1,1 @@
+../../../QIMKitVendor/QIMKitVendor/QIMHTTP/NSURLSessionTask+QIMHttpRequest.h

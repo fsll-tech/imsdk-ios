@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMSDK/QIMSDK/QIMSDKUIHelper+JumpHandle.h

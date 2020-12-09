@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/General/Categories/UINavigationController/UINavigationController+QIMOrientation.h

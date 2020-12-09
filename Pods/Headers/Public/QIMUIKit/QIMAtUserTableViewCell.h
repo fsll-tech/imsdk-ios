@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/Application/ViewController/Chat/InputBar/QIMAT/QIMAtUserTableViewCell.h

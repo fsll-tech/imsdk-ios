@@ -1,0 +1,1 @@
+../../../../QIMKitVendor/QIMKitVendor/QIMLibwebp/src/enc/vp8i_enc.h

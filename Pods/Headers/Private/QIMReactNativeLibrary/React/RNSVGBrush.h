@@ -1,0 +1,1 @@
+../../../../QIMReactNativeLibrary/react-native-svg/ios/Brushes/RNSVGBrush.h

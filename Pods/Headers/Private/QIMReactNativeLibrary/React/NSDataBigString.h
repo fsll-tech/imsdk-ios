@@ -1,0 +1,1 @@
+../../../../QIMReactNativeLibrary/react-native/React/CxxBridge/NSDataBigString.h

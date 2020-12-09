@@ -1,0 +1,1 @@
+../../../QIMKitVendor/QIMKitVendor/QIMPinYin/QIMChineseInclude.h

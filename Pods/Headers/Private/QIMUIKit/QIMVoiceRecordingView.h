@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/General/Controls/Audio/QIMVoiceRecordingView.h

@@ -1,0 +1,1 @@
+../../../QIMKitVendor/QIMKitVendor/QIMJSON/QIMJSONSerializer.h

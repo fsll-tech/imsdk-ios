@@ -1,0 +1,1 @@
+../../../QIMCommon/QIMCommon/QIMKit/QIMKit+QIMUserMedal.h

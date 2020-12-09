@@ -1,0 +1,1 @@
+../../../../QIMReactNativeLibrary/react-native-image-picker/ios/ImagePickerManager.h

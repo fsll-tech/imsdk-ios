@@ -1,0 +1,1 @@
+../../../QIMCommon/QIMCommon/Source/QIMApp/QIMAppSetting.h

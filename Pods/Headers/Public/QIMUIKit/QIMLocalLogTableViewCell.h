@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/General/Verders/QIMLocalLog/View/QIMLocalLogTableViewCell.h

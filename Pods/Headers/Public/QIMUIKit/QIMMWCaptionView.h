@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/General/Verders/QIMMWPhotoBrowser/Classes/QIMMWCaptionView.h

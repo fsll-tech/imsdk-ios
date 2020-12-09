@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/General/Verders/SDWebImageWebPCoder/Classes/UIImage+WebP.h

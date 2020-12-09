@@ -1,0 +1,1 @@
+../../../../QIMKitVendor/QIMKitVendor/QIMLibwebp/src/utils/rescaler_utils.h

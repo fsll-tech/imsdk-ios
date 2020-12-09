@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/QTalkMessageBaloon/QIMChatNotifyInfoCell.h

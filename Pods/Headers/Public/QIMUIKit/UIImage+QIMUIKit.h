@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/General/Categories/UIImage/UIImage+QIMUIKit.h

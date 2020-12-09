@@ -1,0 +1,1 @@
+../../../QIMKitVendor/QIMKitVendor/QIMZBarSDK/libqrencode/qrencode.h

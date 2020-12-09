@@ -1,0 +1,1 @@
+../../../QIMKitVendor/QIMKitVendor/QIMHelper/QIMStringTransformTools/QIMStringTransformTools.h

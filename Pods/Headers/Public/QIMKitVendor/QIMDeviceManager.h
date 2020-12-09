@@ -1,0 +1,1 @@
+../../../QIMKitVendor/QIMKitVendor/QIMHelper/QIMDeviceManager/QIMDeviceManager.h

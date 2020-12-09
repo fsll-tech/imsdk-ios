@@ -1,0 +1,1 @@
+../../../QIMKitVendor/QIMKitVendor/QIMZipArchive/QIMZipArchive.h

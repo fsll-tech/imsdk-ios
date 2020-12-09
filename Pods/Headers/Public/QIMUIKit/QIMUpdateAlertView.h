@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIVendorKit/QIMUpdateView/QIMUpdateAlertView.h

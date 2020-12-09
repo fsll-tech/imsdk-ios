@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/Application/ViewController/Stickers/Emoticon/ViewController/QIMMyEmotionsManagerViewController.h

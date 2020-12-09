@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/General/Controls/LvtuAutoImageView/LvtuAutoImageView.h

@@ -1,0 +1,1 @@
+../../../QIMKitVendor/QIMKitVendor/QIMZBarSDK/Headers/ZBarSDK/ZBarCameraSimulator.h

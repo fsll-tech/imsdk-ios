@@ -1,0 +1,1 @@
+../../../QIMCommon/QIMCommon/QIMDB/IMDataManager+QIMUserMedal.h

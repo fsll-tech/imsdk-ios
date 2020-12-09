@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/Application/ViewController/Main/Session/QTalkNewSessionTableViewCell.h

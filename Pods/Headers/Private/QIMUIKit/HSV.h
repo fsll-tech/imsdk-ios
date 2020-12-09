@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIVendorKit/QIMColorPicker/HSV.h

@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/Application/ViewController/Stickers/CollectionEmoticon/View/CamelLoadingView.h

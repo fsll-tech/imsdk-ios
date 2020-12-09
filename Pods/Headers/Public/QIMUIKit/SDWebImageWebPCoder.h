@@ -1,0 +1,1 @@
+../../../QIMUIKit/QIMUIKit/General/Verders/SDWebImageWebPCoder/Module/SDWebImageWebPCoder.h
